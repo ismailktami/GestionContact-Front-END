@@ -1,0 +1,39 @@
+<div class="card badge-primary">
+<div class="card-header">Liste des contacts</div>
+  <div class="card-body badge-secondary">
+    <div class="form-group col-md-6">
+      <label>Mot clé:</label>
+      <input type="text" class="form-control" name="mc" [(ngModel)]="motCle" />
+      <button class="btn btn-primary" (click)="searchData()">Search</button>
+      <button class="btn btn-danger" (click)="resetSearching()">Reset</button>
+
+    </div>
+  <table class="table table-striped">
+
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let c of pageContacts?.content">
+      <th>{{c.id}}</th>
+      <th>{{c.nom}}</th>
+      <th>{{c.prenom}}</th>
+      <th>{{c.email}}</th>
+      <th><button class="btn btn-primary" (click)="editerContact(c )">Editer</button></th>
+    </tr>
+
+  </table>
+
+  </div>
+
+</div>
+<div class="container">
+  <ul class="nav nav-pills " >
+    <li  class="nav-item"  *ngFor="let p of pages ;let i=index" >
+      <a class="nav-link " [ngClass]="{'active':i==page}"   (click)="goToPage(i)" style="cursor: pointer">{{i}}</a>
+    </li>
+  </ul>
+</div>

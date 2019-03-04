@@ -1,0 +1,68 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+  <div class="card" *ngIf="mode==1" >
+    <div class="card card-header badge-primary" >New Contact</div>
+    <div class="card-body">
+      <div>
+        <div class="form-group">
+          <label class="col-form-label">Nom:</label>
+          <input class="form-control" type="text" name="nom" [(ngModel)]="contact.nom" />
+        </div>
+        <div class="form-group">
+          <label class="col-form-label">Prenom:</label>
+          <input class="form-control" type="text" [(ngModel)]="contact.prenom" name="prenom" />
+        </div>
+        <div class="form-group">
+          <label class="col-form-label">Email:</label>
+          <input class="form-control" type="email" name="email" [(ngModel)]="contact.email" />
+        </div>
+        <div class="form-group">
+          <label class="col-form-label">Date Naissance:</label>
+          <input class="form-control" type="date" [(ngModel)]="contact.datenaissance" name="datenai"  />
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label">Téléphone:</label>
+          <input class="form-control" name="tel" type="text"[(ngModel)]="contact.tel" />
+        </div>
+
+        <div class="form-group">
+      <button class="btn btn-primary" [disabled]="!f.valid" (click)="AddContact()">Ajouter</button>
+          <button class="btn btn-danger" (click)="reset()">Annuler</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="card" *ngIf="mode==2">
+    <div class="card card-header badge-primary" >Contact ajouté</div>
+    <div class="card-body">
+
+        <div class="form-group">
+          <label class="col-form-label">Nom:</label>
+          <label  class="col-form-label" >{{contact.nom}}</label>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label">Prenom:</label>
+          <label  class="col-form-label" >{{contact.prenom}}</label>        </div>
+        <div class="form-group">
+          <label class="col-form-label">Email:</label>
+          <label  class="col-form-label" >{{contact.email}}</label>        </div>
+        <div class="form-group">
+          <label class="col-form-label">Date Naissance:</label>
+          <label  class="col-form-label" >{{contact.datenaissance}}</label>        </div>
+
+        <div class="form-group">
+          <label class="col-form-label">Téléphone:</label>
+          <label class="col-form-label" >{{contact.tel}}</label>
+        </div>
+      </div>
+
+    </div>
+
+
+
+</div>

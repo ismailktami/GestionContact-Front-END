@@ -1,0 +1,102 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+  <div class="card" >
+    <div class="card card-header badge-primary" >New Contact</div>
+    <div class="card-body">
+      <div>
+        <form  #f="ngForm" (ngSubmit)="onsaveContact(f.value)">
+          <div class="form-group">
+            <label class="col-form-label">Nom:</label>
+            <input class="form-control" type="text" ngModel name="nom"  #name="ngModel"  required minlength="4"  />
+
+          </div>
+
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="name.errors.forbiddenName">
+              Name cannot be Bob.
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Prenom:</label>
+            <input class="form-control" type="text"  ngModel name="prenom"  required minlength="4" maxlength="20" #prenom="ngModel" />
+          </div>
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
+               class="alert alert-danger">
+            <div *ngIf="prenom.errors.required">
+              Name is required.
+            </div>
+
+            <div *ngIf="prenom.errors.max">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="prenom.errors.forbiddenName">
+              Name cannot be Bob.
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Email:</label>
+            <input class="form-control" type="email"  ngModel name="email" #email="ngModel"  required  [pattern]="emailPattern" email="true" />
+          </div>
+
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+              email is required.
+            </div>
+
+            <div *ngIf="email.errors.forbiddenName">
+              This is not correct form of emails
+            </div>
+
+            <div *ngIf="email.errors.pattern">
+              Official Email not valid.
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-form-label">Date Naissance:</label>
+            <input class="form-control" type="date"  ngModel name="datenaissance"  required   />
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Téléphone:</label>
+            <input class="form-control" name="tel" type="text" #tele="ngModel"  ngModel  required  maxlength="10" minlength="10"/>
+          </div>
+          <div *ngIf="tele.invalid && (tele.dirty || tele.touched)"
+               class="alert alert-danger">
+            <div *ngIf="tele.errors.required">
+              Phone is required.
+            </div>
+
+            <div *ngIf="tele.errors.max">
+              Phone must be equal 10 number long.
+            </div>
+            <div *ngIf="tele.errors.forbiddenName">
+              Phone cannot be Bob.
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary" [disabled]="!f.valid"  value="Ajouter"/>
+            <button class="btn btn-danger" (click)="reset()">Annuler</button>
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
