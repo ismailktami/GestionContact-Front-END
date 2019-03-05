@@ -28,6 +28,21 @@ export class ContactsServiceService {
       map(resp => resp)
       );
   }
+  getContact(id: number ) {
+    return this.http.get('http://localhost:8096/contacts/' + id).pipe(
+      map(resp => resp.json())
+    );
+  }
+
+  updateContact(contact: Contact) {
+   return  this.http.put('http://localhost:8096/contacts/' + contact.id, contact).pipe(map(resp => {
+      resp.json();
+    }));
+
+  }
+  deletecontact(id: number){
+    return this.http.delete('http://localhost:8096/contacts/' + id);
+  }
 }
 
 

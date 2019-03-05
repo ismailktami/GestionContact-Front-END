@@ -3,7 +3,7 @@ import {Http} from '@angular/http';
 import {map} from 'rxjs/operators';
 import {ContactsServiceService} from '../services/contacts-service.service';
 import {Contact} from '../../model/model.contact';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
@@ -17,7 +17,7 @@ export class ContactsComponent implements OnInit {
   page = 0;
   size: number;
   pages: any;
-  constructor(private http: Http, public contactsService: ContactsServiceService
+  constructor(private http: Http, public contactsService: ContactsServiceService, public router: Router
   ) {
 
    /* this.contactsService.getContacts().subscribe(data => {
@@ -49,7 +49,17 @@ export class ContactsComponent implements OnInit {
     this.motCle = '';
     this.searchData();
     }
-   editerContact(contact: Contact) {
+   editerContact(id: number) {
+    this.router.navigate(['edit-contact', id]);
+  }
+  deletecontact(id: number ) {
+    if (confirm('Vous êtes sûr de la supression')) {
+      this.contactsService.deletecontact(id).subscribe(data => {
+        this.searchData();
 
+      }, err => {
+        alert('Error lors de supression');
+      });
+    }
   }
 }

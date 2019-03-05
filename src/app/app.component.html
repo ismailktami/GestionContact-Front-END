@@ -23,10 +23,23 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <div class="btn-group mr-sm-2">
+      <div class="btn-group dropleft" role="group">
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropleft</span>
+        </button>
+        <div class="dropdown-menu ">
+          <a class="dropdown-item" href="#"><i class="fa fa-user fa-fw"></i>Profil</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-globe fa-fw"></i>Fr </a>
+          <a class="dropdown-item" href="#"><i class="fa fa-globe fa-fw"></i>En  </a>
+          <a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-fw"></i>Logout  </a>
+
+        </div>
+      </div>
+      <button type="button" class="btn btn-secondary">
+        Split dropleft
+      </button>
+    </div>
   </div>
 </nav>
 <router-outlet></router-outlet>

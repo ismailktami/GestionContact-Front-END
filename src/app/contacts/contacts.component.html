@@ -15,14 +15,18 @@
       <th>Nom</th>
       <th>Prénom</th>
       <th>Email</th>
-      <th></th>
+      <th>Phone</th>
+      <th>Gestion</th>
     </tr>
     <tr *ngFor="let c of pageContacts?.content">
       <th>{{c.id}}</th>
       <th>{{c.nom}}</th>
       <th>{{c.prenom}}</th>
       <th>{{c.email}}</th>
-      <th><button class="btn btn-primary" (click)="editerContact(c )">Editer</button></th>
+      <th>{{c.tel}}</th>
+      <th><a class="fa fa-edit  fa-lg " style="color:greenyellow;cursor: pointer" (click)="editerContact(c.id)"></a>
+    <a class="fa fa-trash  fa-lg  " style="color: red;cursor:pointer;" (click)="deletecontact(c.id)"></a></th>
+
     </tr>
 
   </table>
